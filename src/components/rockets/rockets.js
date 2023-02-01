@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchRockets } from '../../redux/rockets/rockets';
+import { fetchRockets, reserve } from '../../redux/rockets/rockets';
 import './rockets.css';
 
 function Rockets() {
@@ -10,16 +10,24 @@ function Rockets() {
     dispatch(fetchRockets({ method: 'GET' }));
   }, [dispatch]);
 
+  const reserves = (bool) => {
+    if (bool) return <span>reserved</span>;
+    return null;
+  };
   return (
     <section className="rockets">
       {rockets.map((rocket) => (
         <div key={rocket.id} className="rocket">
-          <img src={rocket.flickr_images[0]} alt={rocket.name} />
+          <img src={rocket.image} alt={rocket.name} />
 
           <div className="rocket-info">
             <h2>{rocket.name}</h2>
-            <p>{rocket.description}</p>
-            <button type="button">Reserve Rocket</button>
+            <p>
+              { reserves(rocket.reserved) }
+              {' '}
+              {rocket.description}
+            </p>
+            <button className={`${rocket.reserved ? 'cancel' : 'reserve'}`} onClick={() => { dispatch(reserve(rocket.id)); }} type="button">{`${rocket.reserved ? 'Cancel Reservation' : 'Reserve Rocket'}`}</button>
           </div>
         </div>
       ))}
