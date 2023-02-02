@@ -41,17 +41,20 @@ export const fetchRockets = createAsyncThunk(
   },
 );
 
-export default function reducer(state = [], action) {
+export default function reducer(state = { rockets: [], status: false }, action) {
   switch (action.type) {
     case LIST_ROCKETS:
-      return action.rockets;
+      return { rockets: action.rockets, status: true };
     case RESERVE_ROCKET:
-      return state.map((rocket) => {
-        if (rocket.id === action.id) {
-          return { ...rocket, reserved: !rocket.reserved };
-        }
-        return rocket;
-      });
+      return {
+        rockets: state.rockets.map((rocket) => {
+          if (rocket.id === action.id) {
+            return { ...rocket, reserved: !rocket.reserved };
+          }
+          return rocket;
+        }),
+        status: true,
+      };
     default:
       return state;
   }

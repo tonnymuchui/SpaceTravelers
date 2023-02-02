@@ -4,11 +4,11 @@ import { fetchRockets, reserve } from '../../redux/rockets/rockets';
 import './rockets.css';
 
 function Rockets() {
-  const rockets = useSelector((state) => state.rockets);
+  const { rockets, status } = useSelector((state) => state.rockets);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchRockets({ method: 'GET' }));
-  }, [dispatch]);
+    if (!status) dispatch(fetchRockets({ method: 'GET' }));
+  }, [status, dispatch]);
 
   const reserves = (bool) => {
     if (bool) return <span>reserved</span>;
