@@ -1,0 +1,22 @@
+h1 {
+  font-size: 3.5vw;
+  margin: 3vh 0;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.profile-ul {
+  margin: 0;
+  padding: 0;
+}
+
+.profile-li {
+  list-style: none;
+  margin-right: 6vw;
+  font-size: 2vw;
+  padding: 2vh 3vw 4vh;
+  border: #0008 solid 1px;
+}
