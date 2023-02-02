@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from 'react-router-dom';
+import Links from './Link';
 import Logo from '../assets/images/planet.png';
 
 const Navbar = () => (
@@ -9,12 +9,11 @@ const Navbar = () => (
         <h1 className="logoText">Space Travellers Hub</h1>
       </div>
       <ul className="NavLinks flex">
-        <li><NavLink to="/">Rockets</NavLink></li>
-        <li><NavLink to="/missions">Missions</NavLink></li>
-        <li><NavLink to="/my_profile">My Profile</NavLink></li>
+        <li><Links isactive={false} path="/" name="Rocket" /></li>
+        <li><Links isactive={false} path="/missions" name="Missions" /></li>
+        <li><Links isactive={false} path="/my_profile" name="My Profile" /></li>
       </ul>
     </header>
-    <Outlet />
   </>
 );
 

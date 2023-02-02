@@ -9,7 +9,6 @@ function profile() {
         <MyProfile />
       </div>
       <div className="profile-info">
-        <h1>My Rockets</h1>
         <Rockets />
       </div>
     </section>
