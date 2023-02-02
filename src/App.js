@@ -1,7 +1,4 @@
-import {
-  Routes,
-  Route,
-} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Rockets from './components/rockets/rockets';
 import './App.css';
