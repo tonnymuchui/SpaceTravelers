@@ -14,32 +14,31 @@ const MissionSlice = createSlice({
   name: 'missions',
   initialState: {
     missions: [],
-    status: 'mission_display',
-    loading: false,
+    status: null,
   },
   reducers: {
     missionSpace: (state, action) => {
-      const myState = state;
-      const newState = myState.missions.map((jet1) => {
-        if (jet1.id !== action.payload) {
-          return jet1;
+      const prevState = state;
+      const currentState = prevState.missions.map((going) => {
+        if (going.id !== action.payload) {
+          return going;
         }
         return {
-          ...jet1, mission: !jet1.mission,
+          ...going, mission: !going.mission,
         };
       });
-      myState.missions = newState;
+      prevState.missions = currentState;
     },
   },
 
   extraReducers: {
     [fetchMission.pending]: (state) => {
       const IsPending = state;
-      IsPending.pending = true;
+      IsPending.pending = 'pending';
     },
     [fetchMission.fulfilled]: (state, action) => {
       const joinMission = state;
-      joinMission.loading = false;
+      joinMission.status = 'fulfilled';
       const missionData = [];
       action.payload.map((mission) => missionData.push({
         id: mission.mission_id,
@@ -51,7 +50,7 @@ const MissionSlice = createSlice({
     },
     [fetchMission.rejected]: (state) => {
       const IsRejected = state;
-      IsRejected.loading = false;
+      IsRejected.status = 'rejected';
     },
   },
 });
