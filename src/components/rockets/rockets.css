@@ -1,0 +1,48 @@
+.rocket {
+  display: flex;
+  margin: 4vh 3vw;
+}
+
+.rocket-info {
+  display: block;
+  margin: 0 2vw;
+}
+
+.rocket-info p {
+  font-size: larger;
+  line-height: 4vh;
+}
+
+.rocket-info h2 {
+  font-size: xx-large;
+  margin: auto;
+}
+
+button {
+  background-color: #3e9eff;
+  height: 6vh;
+  font-size: large;
+  color: #fff;
+  font-weight: lighter;
+  width: 11vw;
+  margin: 0 0 3vh 0;
+  border: 0;
+  border-radius: 5px;
+}
+
+.cancel {
+  background-color: #fff;
+  color: #0007;
+  border: #000 solid 1px;
+  font-weight: 800;
+  width: 17vw;
+  height: 6vh;
+}
+
+span {
+  background-color: #1cacbc;
+  border-radius: 5px;
+  padding: 1px 10px;
+  margin: 0 1.5vw 0 0;
+  color: #fff;
+}
