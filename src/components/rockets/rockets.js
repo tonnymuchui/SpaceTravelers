@@ -10,10 +10,6 @@ function Rockets() {
     if (!status) dispatch(fetchRockets({ method: 'GET' }));
   }, [status, dispatch]);
 
-  const reserves = (bool) => {
-    if (bool) return <span>reserved</span>;
-    return null;
-  };
   return (
     <section className="rockets">
       {rockets.map((rocket) => (
@@ -23,7 +19,7 @@ function Rockets() {
           <div className="rocket-info">
             <h2>{rocket.name}</h2>
             <p>
-              { reserves(rocket.reserved) }
+              {rocket.reserved && <span>reserved</span>}
               {' '}
               {rocket.description}
             </p>
